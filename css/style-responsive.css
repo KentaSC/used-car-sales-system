@@ -1,0 +1,1009 @@
+@charset "UTF-8";
+
+/* ==========================================================
+   Live motors 統合レスポンシブCSS
+   対象ページ: ヘッダー、トップ(main.php)、マイページ(mypage.php)、フッター・チャットボット
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   1. 共通・ベーススタイル設定
+   ---------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f8f9fa;
+    color: #222;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* ----------------------------------------------------------
+   2. 共通サイトヘッダー (header.php)
+   ---------------------------------------------------------- */
+.site-header {
+    background-color: #eaf2ed;
+    padding: 12px 24px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.header-inner {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #0f3d2e;
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 12px;
+    width: auto;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.sub-title {
+    font-size: 0.75rem;
+    color: #198754;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 14px;
+    color: #111111;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.header-btn:hover {
+    background-color: #f8f9fa;
+    color: #000000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-btn i {
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.divider {
+    width: 1px;
+    height: 28px;
+    background-color: #c5d6cc;
+    margin: 0 4px;
+}
+
+.user-greeting {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #111111;
+    font-size: 0.9rem;
+}
+
+.user-greeting i {
+    font-size: 1.2rem;
+}
+
+/* ----------------------------------------------------------
+   3. メインページ (main.php)
+   ---------------------------------------------------------- */
+/* スライダー */
+.main-slider {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.main-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.main-slider .slide.active {
+    opacity: 1;
+}
+
+.main-copy {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    z-index: 10;
+}
+
+.main-copy h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.main-copy p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* カテゴリーナビゲーション */
+nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #155446;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #eaf2ed;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+nav ul li a:hover {
+    background-color: #155446;
+    color: #fff;
+}
+
+/* おすすめ車両セクション見出し */
+h2 {
+    /* text-align: center; */
+    font-size: 1.8rem;
+    color: #155446;
+    margin: 40px 0 25px;
+    font-weight: bold;
+}
+
+/* 車両一覧グリッド */
+.car-list {
+    max-width: 1160px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.car-list figure {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin: 0;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.car-list figure:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.car-list img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.car-list figcaption {
+    padding: 20px;
+}
+
+.car-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.specs-grid {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.price-box {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 10;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.favorite-btn:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+/* ----------------------------------------------------------
+   4. マイページ (mypage.php)
+   ---------------------------------------------------------- */
+.mypage-container {
+    max-width: 1160px;
+    margin: 30px auto;
+    display: flex;
+    gap: 30px;
+    padding: 0 15px;
+}
+
+.mypage-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    padding: 20px;
+    height: fit-content;
+}
+
+.sidebar-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.sidebar-menu a:hover, 
+.sidebar-menu a.active {
+    background-color: #eaf2ed;
+    color: #198754;
+    font-weight: bold;
+}
+
+.mypage-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px 25px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    background-color: #ced4da;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.profile-info h2 {
+    font-size: 1.25rem;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+    text-align: left;
+    color: #222;
+}
+
+.profile-info p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.section-box {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.section-box h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.negotiation-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.negotiation-img {
+    width: 240px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.negotiation-details {
+    flex-grow: 1;
+}
+
+.negotiation-details h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.spec-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.status-badge {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.btn-detail {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.btn-detail:hover {
+    background: #f8f9fa;
+}
+
+/* ----------------------------------------------------------
+   5. フッター ＆ チャットボット (footer.php)
+   ---------------------------------------------------------- */
+.footer {
+    background-color: #f7f8f7;
+    color: #222;
+    padding: 45px 5% 20px;
+    border-top: 1px solid #e5e7e5;
+    margin-top: 60px;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    min-height: 300px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-info {
+    width: 100%;
+    max-width: 380px;
+    text-align: left;
+}
+
+.footer-logo {
+    width: 220px;
+    height: auto;
+    display: block;
+    margin-bottom: 25px;
+}
+
+.footer-description {
+    font-size: 14px;
+    line-height: 2;
+    margin: 0 0 25px;
+    color: #555;
+}
+
+.footer-detail p {
+    display: flex;
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0 0 15px;
+}
+
+.footer-detail i {
+    color: #164d42;
+    font-size: 20px;
+    width: 32px;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.mail-link {
+    display: inline-block;
+    color: #164d42;
+    text-decoration: none;
+}
+
+.mail-link:hover {
+    opacity: 0.7;
+}
+
+.copyright {
+    text-align: center;
+    color: #24483f;
+    font-size: 14px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e4e2;
+}
+
+/* チャットボットウィジェット */
+.chatbot {
+    position: fixed;
+    right: 30px;
+    bottom: 25px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chat-open {
+    width: 250px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #155446;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+}
+
+.chat-open:hover {
+    background-color: #0e4035;
+    transform: translateY(-2px);
+}
+
+.chat-open i {
+    margin-right: 8px;
+    font-size: 17px;
+}
+
+.chat-window {
+    display: none;
+    width: 360px;
+    height: 520px;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.25);
+    margin-bottom: 12px;
+    flex-shrink: 0;
+}
+
+.chat-header {
+    height: 65px;
+    padding: 0 18px;
+    background-color: #155446;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-header strong {
+    display: block;
+    font-size: 17px;
+}
+
+.chat-header span {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+.chat-close {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.chat-messages {
+    height: 220px;
+    padding: 18px;
+    overflow-y: auto;
+    background-color: #f5f7f6;
+}
+
+.bot-message {
+    width: fit-content;
+    max-width: 85%;
+    padding: 10px 13px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px 14px 14px 14px;
+    font-size: 13px;
+    line-height: 1.7;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.user-message {
+    width: fit-content;
+    max-width: 85%;
+    padding: 10px 13px;
+    margin: 0 0 10px auto;
+    background-color: #155446;
+    color: #fff;
+    border-radius: 14px 5px 14px 14px;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.chat-buttons {
+    padding: 12px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+.chat-buttons button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 6px;
+    border: 1px solid #155446;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #155446;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chat-buttons button:last-child {
+    margin-bottom: 0;
+}
+
+.chat-buttons button:hover {
+    background-color: #155446;
+    color: #fff;
+}
+
+
+/* ----------------------------------------------------------
+   6. レスポンシブ対応 メディアクエリ (タブレット・スマホ)
+   ---------------------------------------------------------- */
+
+/* タブレット・中型画面以下 (〜992px) */
+@media screen and (max-width: 992px) {
+    .mypage-container {
+        flex-direction: column;
+    }
+    .mypage-sidebar {
+        width: 100%;
+    }
+    .footer-inner {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .footer-info {
+        max-width: 100%;
+    }
+}
+
+/* スマートフォンサイズ (〜768px以下) */
+
+@media screen and (max-width: 768px) {
+    .site-header {
+        padding: 10px 15px;
+    }
+    .header-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    /* ▼ここをグリッドに変更するか、480px側にお任せする形にします */
+    .header-actions {
+        width: 100% !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* 2列にする */
+        gap: 6px !important;
+    }
+
+    .header-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    .divider {
+        display: none;
+    }
+    .user-greeting {
+        font-size: 0.8rem;
+        width: 100%;
+        justify-content: center;
+    }
+    .user-greeting {
+        font-size: 0.8rem;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    /* メインスライダー・コピー */
+    .main-slider {
+        height: 350px;
+    }
+    .main-copy h1 {
+        font-size: 1.8rem;
+    }
+    .main-copy p {
+        font-size: 0.95rem;
+    }
+
+    /* ナビゲーションメニュー */
+    nav ul {
+        gap: 10px;
+        padding: 0 10px;
+    }
+    nav ul li a {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    /* 車両一覧グリッド */
+    .car-list {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+
+    /* マイページ・商談カード */
+    .negotiation-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .negotiation-img {
+        width: 100%;
+        height: 200px;
+    }
+    .spec-row {
+        grid-template-columns: 120px 1fr;
+    }
+
+    /* チャットボットモバイル対応 */
+    .chatbot {
+        position: fixed !important;
+        left: 15px !important;
+        bottom: 15px !important;
+        right: auto !important;
+        z-index: 9999 !important;
+    }
+
+    .chat-open {
+        width: 60px !important;
+        height: 60px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+    }
+
+    .chat-open i {
+        margin-right: 0 !important;   /* テキストが無くなるので右余白を消去 */
+        font-size: 26px !important;   /* アイコンサイズをアップ */
+    }
+    
+    /* スマホ時のみ：「チャットで質問する」のテキストを非表示 */
+    .chat-open-text {
+        display: none !important;
+    }
+
+    /* チャットウィンドウ全体を少しゆったりした高さにする */
+    .chat-window {
+        width: 100% !important;
+        height: 460px !important;         /* 高さをしっかり確保して見やすくする */
+        max-height: 65vh !important;
+        display: none;                    /* JSの開閉制御を邪魔しない初期値 */
+        flex-direction: column !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        /* ★チャットの外側へスクロールが伝わるのを防ぐ */
+        overscroll-behavior: contain !important;
+    }
+
+    .chat-window[style*="display: block"], 
+    .chat-window[style*="display: flex"] {
+        display: flex !important;
+    }
+
+    .chat-header {
+        height: 55px !important;
+        padding: 0 16px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .chat-close {
+        font-size: 30px !important;
+        background: transparent !important;
+        border: none !important;
+        color: #fff !important;
+        cursor: pointer !important;
+        padding: 0 5px !important;
+        line-height: 1 !important;
+    }
+
+    /* メッセージエリアをスクロール式にして、高さを適度に制限する */
+    .chat-messages {
+        flex: 1 !important;               /* 残りのスペースを柔軟に使う */
+        padding: 12px 14px !important;
+        overflow-y: auto !important;      /* メッセージが増えたらスクロール */
+        background-color: #f5f7f6 !important;
+    }
+
+    .bot-message, .user-message {
+        font-size: 13px !important;       /* 文字を小さくしすぎず読みやすくする */
+        line-height: 1.6 !important;
+        margin-bottom: 8px !important;
+        /* ★メッセージ部分のスクロールが背景に漏れるのを防ぐ */
+        overscroll-behavior: contain !important;
+    }
+
+    /* ボタンエリアは小さくせず、縦並びでゆったり押しやすく配置 */
+    .chat-buttons {
+        padding: 12px !important;
+        background-color: #fff !important;
+        border-top: 1px solid #eee !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;              /* ボタン同士の適度な隙間を死守する */
+        flex-shrink: 0 !important;
+    }
+
+    .chat-buttons button {
+        width: 100% !important;
+        padding: 9px 12px !important;     /* 指で押しやすい十分な高さを確保 */
+        font-size: 12px !important;       /* 見やすい文字サイズに戻す */
+        margin-bottom: 0 !important;
+        text-align: center !important;
+    }
+}
+
+/* 小型スマートフォンサイズ (〜480px以下) */
+@media screen and (max-width: 480px) {
+    /* ヘッダー全体をコンパクトにして中央に寄せる */
+    .site-header {
+        padding: 10px;
+    }
+    
+    .header-inner {
+        width: 90%;
+        max-width: 340px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* ロゴまわり */
+    .logo-img {
+        height: 28px;
+        margin-right: 6px;
+    }
+    .brand-name {
+        font-size: 1.1rem;
+    }
+
+    /* ボタンエリアを 2列のグリッドにして画像のように並べる */
+    .header-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2列に配置 */
+        gap: 6px;
+    }
+
+    /* 各ボタンの調整 */
+    .header-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.75rem;
+        padding: 6px 4px;
+    }
+
+    .divider {
+        display: none;
+    }
+    
+    .user-greeting {
+        font-size: 0.75rem;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .main-copy h1 {
+        font-size: 1.5rem;
+    }
+}
+/* ----------------------------------------------------------
+   601px ～ 827px 用のヘッダー崩れ防止・調整
+   ---------------------------------------------------------- */
+@media screen and (min-width: 601px) and (max-width: 827px) {
+    .site-header {
+        padding: 10px 15px !important;
+    }
+
+    .header-inner {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    /* ロゴのサイズ調整 */
+    .logo-img {
+        height: 32px !important;
+    }
+    .brand-name {
+        font-size: 1.2rem !important;
+    }
+
+    /* アクションエリアを1行（Flex）に固定 */
+    .header-actions {
+        width: auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    /* ボタンの余白と文字サイズを絞って1行に収める */
+    .header-btn {
+        width: auto !important;
+        padding: 6px 10px !important;
+        font-size: 0.8rem !important;
+        white-space: nowrap !important;
+    }
+
+    .header-btn i {
+        font-size: 0.92rem !important;
+    }
+
+    /* 区切り線と挨拶テキスト */
+    .divider {
+        display: block !important;
+        height: 18px !important;
+        margin: 0 2px !important;
+    }
+
+    .user-greeting {
+        width: auto !important;
+        font-size: 0.8rem !important;
+        white-space: nowrap !important;
+    }
+}

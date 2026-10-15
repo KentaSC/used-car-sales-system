@@ -1,0 +1,1125 @@
+/* ========================================
+   全体
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #222;
+    font-family: Arial, "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: 13px;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* ========================================
+   見積もりページ
+======================================== */
+
+.estimate-page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px 25px 50px;
+}
+
+.estimate-header {
+    text-align: center;
+}
+
+.estimate-header h1 {
+    margin: 0 0 14px;
+    color: #174f3e;
+    font-size: 18px;
+    text-align: left;
+}
+
+.estimate-description {
+    margin: 15px 0 18px;
+    color: #444;
+    font-size: 11px;
+}
+
+
+/* ========================================
+   ステップ
+======================================== */
+
+.estimate-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.estimate-step {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #777;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.estimate-step.active {
+    color: #174f3e;
+    font-weight: bold;
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #bbb;
+    color: #fff;
+    font-size: 11px;
+}
+
+.estimate-step.active .step-number {
+    background: #174f3e;
+}
+
+.step-line {
+    width: 90px;
+    height: 1px;
+    margin: 0 12px;
+    background: #bbb;
+}
+
+
+/* ========================================
+   レイアウト
+======================================== */
+
+.estimate-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 310px;
+    gap: 22px;
+    align-items: start;
+}
+
+
+/* ========================================
+   左側フォーム
+======================================== */
+
+.estimate-section {
+    margin-bottom: 18px;
+}
+
+.estimate-section h2 {
+    margin: 0 0 10px;
+    color: #174f3e;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.required {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #174f3e;
+    color: #fff;
+    font-size: 8px;
+    vertical-align: middle;
+}
+
+
+/* ========================================
+   お客様情報
+======================================== */
+
+.customer-table {
+    display: grid;
+    grid-template-columns: 165px minmax(0, 1fr);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.customer-label {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    background: #f8faf9;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.customer-inputs,
+.customer-input-full,
+.address-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+.customer-inputs input {
+    width: 50%;
+}
+
+.customer-input-full input,
+.address-area {
+    width: 100%;
+}
+
+.customer-table > div:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+
+.customer-inputs input,
+.customer-input-full input,
+.address-area input,
+.address-area select {
+    height: 35px;
+    padding: 7px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 11px;
+    outline: none;
+}
+
+.customer-inputs input:focus,
+.customer-input-full input:focus,
+.address-area input:focus,
+.address-area select:focus,
+textarea:focus {
+    border-color: #174f3e;
+}
+
+.address-area {
+    display: block;
+}
+
+.address-top {
+    display: grid;
+    grid-template-columns: 145px 65px minmax(0, 1fr);
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.address-top input,
+.address-top select {
+    width: 100%;
+}
+
+.address-area > input {
+    width: 100%;
+}
+
+.address-search {
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+    background: #174f3e;
+    color: #fff;
+    font-size: 9px;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   選択カード
+======================================== */
+
+.choice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.choice-card {
+    position: relative;
+    min-height: 145px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.choice-card:hover {
+    border-color: #174f3e;
+}
+
+.choice-card:has(input:checked) {
+    border: 2px solid #174f3e;
+    background: #fbfdfc;
+}
+
+.choice-card input {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.choice-icon {
+    margin: 10px 0;
+    font-size: 27px;
+}
+
+.choice-card strong {
+    display: block;
+    color: #174f3e;
+    font-size: 12px;
+}
+
+.choice-card p {
+    margin: 9px 0 0;
+    color: #777;
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   ラジオ
+======================================== */
+
+.radio-box {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    min-height: 48px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.radio-box label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #333;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.note {
+    margin: 8px 0 0;
+    color: #777;
+    font-size: 9px;
+}
+
+
+/* ========================================
+   テキストエリア
+======================================== */
+
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    font-size: 10px;
+    outline: none;
+}
+
+.character-count {
+    margin-top: 3px;
+    color: #888;
+    font-size: 8px;
+    text-align: right;
+}
+
+
+/* ========================================
+   エラー
+======================================== */
+
+.estimate-error {
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    border: 1px solid #e0aaa5;
+    border-radius: 5px;
+    background: #fff5f4;
+    color: #b33b32;
+    font-size: 10px;
+}
+
+.estimate-error ul {
+    margin: 5px 0 0;
+    padding-left: 18px;
+}
+
+
+/* ========================================
+   確認ボタン
+======================================== */
+
+.estimate-submit {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    background: #00563f;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.estimate-submit:hover {
+    background: #004532;
+}
+
+.estimate-submit span {
+    position: absolute;
+    right: 18px;
+    font-size: 22px;
+    line-height: 15px;
+}
+
+.estimate-back {
+    display: block;
+    margin-top: 14px;
+    color: #174f3e;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+
+/* ========================================
+   右側 車両情報
+======================================== */
+
+.car-info-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.car-info-card h2,
+.feature-card h2 {
+    margin: 0 0 15px;
+    color: #174f3e;
+    font-size: 15px;
+}
+
+.car-info-image {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #eee;
+}
+
+.car-info-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.car-info-image span {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 4px 7px;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, .75);
+    color: #fff;
+    font-size: 8px;
+}
+
+.car-info-card h3 {
+    margin: 14px 0 4px;
+    font-size: 14px;
+}
+
+.car-sub {
+    margin: 0;
+    color: #666;
+    font-size: 10px;
+}
+
+
+/* ========================================
+   価格
+======================================== */
+
+.car-price {
+    margin: 18px -20px 0;
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+}
+
+.car-price small {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.car-price strong {
+    display: block;
+    margin-bottom: 13px;
+    color: #d40000;
+    font-size: 25px;
+}
+
+.car-price b {
+    display: block;
+    color: #222;
+    font-size: 24px;
+}
+
+
+/* ========================================
+   スペック
+======================================== */
+
+.car-spec-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #ddd;
+}
+
+.car-spec-table div {
+    display: contents;
+}
+
+.car-spec-table span,
+.car-spec-table strong {
+    padding: 7px 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 9px;
+}
+
+.car-spec-table span {
+    background: #f7f7f7;
+    font-weight: bold;
+}
+
+.car-spec-table strong {
+    font-weight: normal;
+}
+
+
+/* ========================================
+   装備・特徴
+======================================== */
+
+.feature-card {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.feature-grid span {
+    color: #444;
+    font-size: 10px;
+}
+
+
+/* ========================================
+   電話問い合わせ
+======================================== */
+
+.contact-card {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px solid #9cb8ae;
+    border-radius: 6px;
+    background: #fbfdfc;
+}
+
+.contact-icon {
+    color: #00563f;
+    font-size: 23px;
+}
+
+.contact-card strong {
+    display: block;
+    color: #174f3e;
+    font-size: 10px;
+}
+
+.contact-card p {
+    margin: 4px 0 8px;
+    color: #555;
+    font-size: 8px;
+}
+
+.contact-card a {
+    display: block;
+    color: #00563f;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact-card small {
+    display: block;
+    margin-top: 4px;
+    color: #777;
+    font-size: 8px;
+}
+
+
+/* ========================================
+   タブレット
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .estimate-layout {
+        grid-template-columns: 1fr;
+    }
+
+    aside {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .car-info-card {
+        grid-column: 1 / -1;
+    }
+
+    .feature-card,
+    .contact-card {
+        margin-top: 0;
+    }
+}
+
+
+/* ========================================
+   スマートフォン
+======================================== */
+
+@media (max-width: 650px) {
+
+    .estimate-page {
+        padding: 15px;
+    }
+
+    .estimate-header h1 {
+        font-size: 17px;
+    }
+
+    .estimate-steps {
+        justify-content: space-between;
+    }
+
+    .estimate-step {
+        font-size: 9px;
+    }
+
+    .step-line {
+        width: 25px;
+        margin: 0 4px;
+    }
+
+    .step-number {
+        width: 20px;
+        height: 20px;
+    }
+
+    .estimate-layout {
+        display: block;
+    }
+
+    .customer-table {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-label {
+        min-height: 38px;
+        padding: 9px 12px;
+        border-bottom: none;
+    }
+
+    .customer-inputs,
+    .customer-input-full,
+    .address-area {
+        padding: 8px 10px;
+    }
+
+    .address-top {
+        grid-template-columns: 1fr 70px;
+    }
+
+    .address-top select {
+        grid-column: 1 / -1;
+    }
+
+    .choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .choice-card {
+        min-height: 115px;
+    }
+
+    .radio-box {
+        flex-wrap: wrap;
+        gap: 14px 25px;
+    }
+
+    aside {
+        display: block;
+    }
+
+    .feature-card {
+        margin-top: 15px;
+    }
+
+    .contact-card {
+        margin-top: 15px;
+    }
+}
+/* ========================================
+   中古車検索ページ
+======================================== */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px 50px;
+}
+
+
+/* ========================================
+   検索パネル
+======================================== */
+
+.search-panel {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+
+    margin-bottom: 25px;
+    padding: 20px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: #f8faf9;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    color: #174f3e;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.form-group select {
+    min-width: 150px;
+    height: 38px;
+
+    padding: 0 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    background: #fff;
+
+    color: #333;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #174f3e;
+}
+
+
+/* ========================================
+   価格範囲
+======================================== */
+
+.price-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.price-range select {
+    min-width: 120px;
+}
+
+
+/* ========================================
+   検索ボタン
+======================================== */
+
+.submit-btn {
+    height: 38px;
+
+    padding: 0 25px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: #174f3e;
+    color: #fff;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background: #0f3d2e;
+}
+
+
+/* ========================================
+   検索結果件数
+======================================== */
+
+.result-bar {
+    margin-bottom: 15px;
+
+    color: #333;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* ========================================
+   車両一覧
+======================================== */
+
+.car-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* ========================================
+   車両カード
+======================================== */
+
+.car-card {
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: #fff;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.car-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ========================================
+   車両リンク
+======================================== */
+
+.car-link {
+    display: block;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ========================================
+   車両画像
+======================================== */
+
+.car-img-box {
+    width: 100%;
+    height: 210px;
+
+    overflow: hidden;
+
+    background: #eee;
+}
+
+.car-photo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.3s;
+}
+
+.car-card:hover .car-photo {
+    transform: scale(1.03);
+}
+
+
+/* ========================================
+   車名
+======================================== */
+
+.car-title-row {
+    padding: 15px 15px 8px;
+}
+
+.car-name {
+    color: #174f3e;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   車両スペック
+======================================== */
+
+.specs-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 5px;
+
+    padding: 5px 15px 12px;
+}
+
+.spec-item {
+    padding: 7px 5px;
+
+    border-radius: 4px;
+
+    background: #f5f7f6;
+
+    color: #555;
+
+    font-size: 10px;
+
+    text-align: center;
+
+    line-height: 1.4;
+}
+
+
+/* ========================================
+   価格
+======================================== */
+
+.price-box {
+    padding: 12px 15px 18px;
+
+    color: #d40000;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.price-box span {
+    margin-left: 5px;
+
+    color: #555;
+
+    font-size: 10px;
+    font-weight: normal;
+}
+
+
+/* ========================================
+   お気に入りボタン
+======================================== */
+
+.favorite-btn {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #ddd;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    color: #555;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.1);
+
+    transition:
+        background-color 0.2s,
+        color 0.2s,
+        transform 0.2s;
+}
+
+.favorite-btn:hover {
+    background: #fff;
+
+    color: #d40000;
+
+    transform: scale(1.08);
+}
+
+
+/* ========================================
+   検索結果なし
+======================================== */
+
+.no-result {
+    grid-column: 1 / -1;
+
+    padding: 50px 20px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: #fff;
+
+    color: #777;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   タブレット
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .search-panel {
+        flex-wrap: wrap;
+    }
+
+    .car-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ========================================
+   スマートフォン
+======================================== */
+
+@media (max-width: 650px) {
+
+    .container {
+        padding: 20px 12px 40px;
+    }
+
+    .search-panel {
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+        padding: 15px;
+    }
+
+    .form-group select {
+        width: 100%;
+    }
+
+    .price-range {
+        width: 100%;
+    }
+
+    .price-range select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+
+    .car-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .car-img-box {
+        height: 220px;
+    }
+
+    .car-name {
+        font-size: 14px;
+    }
+
+    .price-box {
+        font-size: 19px;
+    }
+
+}

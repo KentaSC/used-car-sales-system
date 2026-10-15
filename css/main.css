@@ -1,0 +1,390 @@
+/* ========================================
+   全体
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff;
+    color: #222;
+    font-family: Arial, "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    font-size: 14px;
+}
+
+/* ========================================
+   ヘッダー
+======================================== */
+
+/* header {
+    width: 100%;
+    height: 100px;
+    background: #f4faf7;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    border-bottom: 1px solid #e5eae7;
+} */
+
+/* ========================================
+   メインビジュアル
+======================================== */
+
+main {
+    position: relative;
+    height: 480px;
+    overflow: hidden;
+}
+/* =========================
+   メイン画像スライドショー
+   ========================= */
+
+.main-slider {
+    /* 画像や文字をabsoluteで配置するための基準 */
+    position: relative;
+
+    width: 100%;
+
+    /* メイン画像の高さ */
+    height: 480px;
+
+    /* はみ出した画像を表示しない */
+    overflow: hidden;
+}
+
+
+/* スライドショーで使用する画像 */
+.main-slider .slide {
+    /* 3枚の画像を同じ位置に重ねる */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    /* 画像の縦横比を維持したまま枠いっぱいに表示 */
+    object-fit: cover;
+
+    /* 画像の中央を基準に表示 */
+    object-position: center;
+
+    /* 通常は画像を非表示 */
+    opacity: 0;
+
+    /* 画像が切り替わるときに1秒かけてフェード */
+    transition: opacity 1s ease;
+}
+
+
+/* activeが付いている画像だけ表示 */
+.main-slider .slide.active {
+    opacity: 1;
+}
+
+
+/* 画像の上に表示する文字全体 */
+.main-copy {
+    position: absolute;
+
+    left: 8%;
+    top: 105px;
+
+    /* 画像より文字を前に表示 */
+    z-index: 2;
+
+    color: #ffffff;
+}
+
+
+/* 「ちょうどいい一台が、きっと見つかる。」 */
+.main-copy h1 {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 2px;
+
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* 「街の小さなお店から〜」 */
+.main-copy p {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================
+   カテゴリーナビ
+======================================== */
+
+nav {
+    width: 100%;
+    padding: 24px 8% 15px;
+    background: #ffffff;
+}
+
+nav ul {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+nav li a {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    color: #222;
+    background: #ffffff;
+    border: 1px solid #d9dfdc;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+nav li a i {
+    color: #102e23;
+    font-size: 21px;
+    width: 24px;
+    text-align: center;
+}
+
+nav li a:hover {
+    background: #f4faf7;
+    border-color: #9fb4aa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   おすすめの車（見出し）
+======================================== */
+
+h2 {
+    width: 100%;
+    max-width: 1160px;
+    margin: 12px auto 18px;
+    padding: 0;
+    color: #12382a;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.4;
+    position: relative;
+}
+
+h2::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 29px;
+    background: #12382a;
+    margin-right: 12px;
+    vertical-align: -4px;
+    border-radius: 1px;
+}
+
+/* ========================================
+   車両一覧リスト（コンテナ）
+======================================== */
+
+.car-list {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* ========================================
+   車両カード（個別）
+======================================== */
+
+.car-list figure {
+    width: 100%;
+    margin: 0;
+    background: #ffffff;
+    border: 1px solid #e0e4e2;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.car-list figure:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.10);
+}
+
+/* 車両画像（でかくなるバグをここで完全に修正） */
+.car-list figure img {
+    display: block;
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    margin: 0;
+}
+
+/* 情報テキストエリア */
+.car-list figcaption {
+    padding: 15px 18px 20px;
+    color: #222;
+}
+
+/* 車名 */
+.car-list .car-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* スペック情報（年式、走行距離、車検） */
+.car-list .specs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+/* 価格表示 */
+.car-list .price-box {
+    font-size: 20px;
+    font-weight: 700;
+    color: #b42318;
+    display: flex;
+    align-items: baseline;
+}
+
+.car-list .price-box span {
+    font-size: 11px;
+    color: #666;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+/* お気に入りボタン */
+.favorite-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #dfe4e1;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    color: #193c2e;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    z-index: 10;
+}
+
+.favorite-btn:hover {
+    background: #f1f8f4;
+    transform: scale(1.05);
+}
+
+
+
+/* ========================================
+   PCサイズ（レスポンシブ）
+======================================== */
+
+@media screen and (min-width: 1200px) {
+    main > img {
+        height: 480px;
+    }
+    main::before {
+        left: calc((100% - 1160px) / 2);
+    }
+    main::after {
+        left: calc((100% - 1160px) / 2);
+    }
+}
+
+/* ========================================
+   タブレットサイズ（レスポンシブ）
+======================================== */
+
+@media screen and (max-width: 900px) {
+    header {
+        height: 85px;
+        padding: 0 20px;
+    }
+    main > img {
+        height: 400px;
+    }
+    main::before { left: 6%; top: 90px; font-size: 30px; }
+    main::after { left: 6%; top: 190px; font-size: 14px; }
+    
+    nav { padding: 20px; }
+    nav ul { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    
+    h2 { margin-left: 20px; margin-right: 20px; }
+    
+    /* タブレット時は2列にする */
+    .car-list {
+        margin: 0 20px;
+        width: calc(100% - 40px);
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========================================
+   スマートフォンサイズ（レスポンシブ）
+======================================== */
+
+@media screen and (max-width: 600px) {
+    header { height: auto; min-height: 70px; padding: 12px 15px; }
+    main > img { height: 300px; }
+    main::before { left: 20px; top: 60px; font-size: 24px; line-height: 1.4; }
+    main::after { left: 20px; top: 145px; right: 20px; font-size: 12px; line-height: 1.6; }
+    
+    nav { padding: 15px; }
+    nav ul { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    nav li a { height: 55px; gap: 8px; font-size: 13px; }
+    nav li a i { font-size: 17px; }
+    
+    h2 { margin: 10px 15px 15px; font-size: 22px; }
+    h2::before { width: 4px; height: 23px; margin-right: 8px; }
+    
+    /* スマホ時は1列にする */
+    .car-list {
+        width: calc(100% - 30px);
+        margin: 0 15px;
+        grid-template-columns: 1fr;
+    }
+    figure { margin-bottom: 20px; }
+    .car-list figure img { height: 190px; }
+    
+    .car-list .car-name { font-size: 15px; }
+    .car-list .price-box { font-size: 18px; }
+}
